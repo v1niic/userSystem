@@ -2,7 +2,7 @@ const form = document.querySelector("#formCadastro");
 const cep = document.querySelector("#cep");
 const buscarCep = document.querySelector("#buscarCep");
 const camposComSugestoes = ["bairro", "cidade"];
-const estado = document.querySelector("estado");
+const estado = document.querySelector("#estado");
 
 function carregarSugestoes(campo) {
     const lista = document.querySelector(`#sugestoes${campo[0].toUpperCase()}${campo.slice(1)}`);
