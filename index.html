@@ -8,6 +8,7 @@
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- Google Fonts Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,67 +17,159 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css">
     <style>
         :root {
-            --bs-primary: #365cf5;
-            --bs-primary-rgb: 54, 92, 245;
+            --bs-primary: #b83264;
+            --bs-primary-rgb: 184, 50, 100;
         }
 
         body {
             min-height: 100vh;
             font-family: "Inter", sans-serif;
-            background: #f4f7fb;
+            background: #faf5f7;
+            color: #3f2933;
         }
 
         .page-header {
-            background: linear-gradient(135deg, #182848 0%, #365cf5 100%);
+            position: relative;
+            overflow: hidden;
+            background: #4b1d32;
             color: #fff;
         }
 
+        .page-header::after {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background: #f3a8c3;
+            content: "";
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 3.5rem;
+            height: 3.5rem;
+            flex: 0 0 auto;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, .25);
+            border-radius: .5rem;
+            background: rgba(255, 255, 255, .1);
+            color: #f3a8c3;
+            font-size: 1.5rem;
+        }
+
         .form-card {
-            margin-top: -2.5rem;
-            border: 0;
-            border-radius: 1rem;
-            box-shadow: 0 1rem 3rem rgba(24, 40, 72, .12);
+            margin-top: -2rem;
+            border: 1px solid #eee0e6;
+            border-radius: .5rem;
+            box-shadow: 0 .75rem 2.5rem rgba(75, 29, 50, .1);
         }
 
         .section-title {
-            color: #182848;
+            margin: 0;
+            color: #4b1d32;
             font-size: 1.05rem;
             font-weight: 700;
         }
 
+        .section-mark {
+            display: grid;
+            width: 2.25rem;
+            height: 2.25rem;
+            flex: 0 0 auto;
+            place-items: center;
+            border-radius: 50%;
+            background: #fae7ee;
+            color: #b83264;
+            font-size: .8rem;
+            font-weight: 700;
+        }
+
+        .form-label {
+            margin-bottom: .45rem;
+            color: #57414b;
+            font-size: .9rem;
+            font-weight: 600;
+        }
+
         .form-control,
         .form-select {
-            min-height: 2.9rem;
-            border-color: #dce3ee;
+            min-height: 3rem;
+            border-color: #e5d5dc;
+            border-radius: .4rem;
         }
 
         .form-control:focus,
         .form-select:focus {
-            border-color: #365cf5;
-            box-shadow: 0 0 0 .25rem rgba(54, 92, 245, .12);
+            border-color: #b83264;
+            box-shadow: 0 0 0 .22rem rgba(184, 50, 100, .16);
+        }
+
+        .input-group > .form-control {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .input-group > .btn {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .btn {
+            min-height: 2.8rem;
+            border-radius: .4rem;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            --bs-btn-bg: #b83264;
+            --bs-btn-border-color: #b83264;
+            --bs-btn-hover-bg: #a32a57;
+            --bs-btn-hover-border-color: #a32a57;
+            --bs-btn-active-bg: #8f244b;
+            --bs-btn-active-border-color: #8f244b;
         }
 
         .required::after {
             content: " *";
-            color: #dc3545;
+            color: #b83264;
+        }
+
+        @media (max-width: 575.98px) {
+            .page-header {
+                padding-top: 2rem !important;
+                padding-bottom: 3rem !important;
+            }
+
+            .form-card {
+                margin-top: -1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <header class="page-header py-5">
-        <div class="container">
-            <p class="mb-2 text-white-50 fw-semibold text-uppercase small">UserSystem</p>
-            <h1 class="display-6 fw-bold mb-2">Cadastro de usuário</h1>
-            <p class="mb-0 text-white-50">Preencha os dados abaixo para cadastrar um novo usuário.</p>
+        <div class="container d-flex align-items-center gap-3">
+            <div class="brand-mark" aria-hidden="true"><i class="bi bi-person-vcard"></i></div>
+            <div>
+                <p class="mb-2 text-uppercase small fw-semibold" style="color: #f3a8c3;">UserSystem</p>
+                <h1 class="h2 fw-bold mb-2">Cadastro de usuário</h1>
+                <p class="mb-0 text-white-50">Preencha os dados para cadastrar um novo usuário.</p>
+            </div>
         </div>
     </header>
 
     <main class="container pb-5">
-        <div class="card form-card">
-            <div class="card-body p-4 p-md-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-11 col-xl-10">
+                <div class="card form-card">
+                    <div class="card-body p-4 p-md-5">
                 <form id="formCadastro">
                     <section class="mb-4">
-                        <h2 class="section-title border-bottom pb-3 mb-4">Dados pessoais</h2>
+                        <div class="d-flex align-items-center gap-3 border-bottom pb-3 mb-4">
+                            <span class="section-mark" aria-hidden="true">01</span>
+                            <h2 class="section-title">Dados pessoais</h2>
+                        </div>
                         <div class="row g-3">
                             <div class="col-12">
                                 <label for="nome" class="form-label required">Nome completo</label>
@@ -98,24 +191,29 @@
                     </section>
 
                     <section>
-                        <h2 class="section-title border-bottom pb-3 mb-4">Endereço</h2>
+                        <div class="d-flex align-items-center gap-3 border-bottom pb-3 mb-4">
+                            <span class="section-mark" aria-hidden="true">02</span>
+                            <h2 class="section-title">Endereço</h2>
+                        </div>
                         <div class="row g-3">
-                            <div class="col-md-4 col-lg-3">
+                            <div class="col-md-4 col-lg-4">
                                 <label for="cep" class="form-label required">CEP</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="cep" name="cep"
                                         placeholder="00000-000" inputmode="numeric"
                                         autocomplete="postal-code" maxlength="9" required>
-                                        <button type="button" class="btn btn-primary" id="buscarCep">Buscar CEP</button>
-                                        <div class="form-text">Digite seu CEP</div>
+                                    <button type="button" class="btn btn-primary px-3" id="buscarCep">
+                                        <i class="bi bi-search me-1" aria-hidden="true"></i>Buscar
+                                    </button>
                                 </div>
+                                <div class="form-text mt-1">Informe o CEP para preencher o endereço.</div>
                             </div>
                             <div class="col-md-8 col-lg-5">
                                 <label for="logradouro" class="form-label required">Logradouro</label>
                                 <input type="text" class="form-control" id="logradouro" name="logradouro"
                                     placeholder="Rua, avenida..." autocomplete="street-address" required>
                             </div>
-                            <div class="col-md-4 col-lg-2">
+                            <div class="col-md-4 col-lg-3">
                                 <label for="numero" class="form-label required">Número</label>
                                 <input type="text" class="form-control" id="numero" name="numero"
                                     placeholder="Ex.: 123" inputmode="numeric" autocomplete="address-line2" required>
@@ -123,26 +221,65 @@
                             <div class="col-md-6 col-lg-4">
                                 <label for="bairro" class="form-label required">Bairro</label>
                                 <input type="text" class="form-control" id="bairro" name="bairro"
-                                    placeholder="Digite o bairro" required>
+                                    placeholder="Digite o bairro" list="sugestoesBairro" required>
+                                <datalist id="sugestoesBairro"></datalist>
                             </div>
                             <div class="col-md-6 col-lg-3">
                                 <label for="estado" class="form-label required">Estado</label>
                                 <input type="text" class="form-control" id="estado" name="estado"
-                                    placeholder="Digite o estado" autocomplete="address-level1" required>
+                                    placeholder="UF ou estado" list="sugestoesEstado"
+                                    autocomplete="address-level1" required>
+                                <datalist id="sugestoesEstado">
+                                    <option value="AC" label="Acre"></option>
+                                    <option value="AL" label="Alagoas"></option>
+                                    <option value="AP" label="Amapá"></option>
+                                    <option value="AM" label="Amazonas"></option>
+                                    <option value="BA" label="Bahia"></option>
+                                    <option value="CE" label="Ceará"></option>
+                                    <option value="DF" label="Distrito Federal"></option>
+                                    <option value="ES" label="Espírito Santo"></option>
+                                    <option value="GO" label="Goiás"></option>
+                                    <option value="MA" label="Maranhão"></option>
+                                    <option value="MT" label="Mato Grosso"></option>
+                                    <option value="MS" label="Mato Grosso do Sul"></option>
+                                    <option value="MG" label="Minas Gerais"></option>
+                                    <option value="PA" label="Pará"></option>
+                                    <option value="PB" label="Paraíba"></option>
+                                    <option value="PR" label="Paraná"></option>
+                                    <option value="PE" label="Pernambuco"></option>
+                                    <option value="PI" label="Piauí"></option>
+                                    <option value="RJ" label="Rio de Janeiro"></option>
+                                    <option value="RN" label="Rio Grande do Norte"></option>
+                                    <option value="RS" label="Rio Grande do Sul"></option>
+                                    <option value="RO" label="Rondônia"></option>
+                                    <option value="RR" label="Roraima"></option>
+                                    <option value="SC" label="Santa Catarina"></option>
+                                    <option value="SP" label="São Paulo"></option>
+                                    <option value="SE" label="Sergipe"></option>
+                                    <option value="TO" label="Tocantins"></option>
+                                </datalist>
                             </div>
                             <div class="col-md-6 col-lg-5">
                                 <label for="cidade" class="form-label required">Cidade</label>
                                 <input type="text" class="form-control" id="cidade" name="cidade"
-                                    placeholder="Digite a cidade" autocomplete="address-level2" required>
+                                    placeholder="Digite a cidade" list="sugestoesCidade"
+                                    autocomplete="address-level2" required>
+                                <datalist id="sugestoesCidade"></datalist>
                             </div>
                         </div>
                     </section>
 
                     <div class="d-flex justify-content-end gap-2 mt-5 pt-4 border-top">
-                        <button type="reset" class="btn btn-light px-4">Limpar</button>
-                        <button type="submit" class="btn btn-primary px-4">Cadastrar usuário</button>
+                        <button type="reset" class="btn btn-outline-secondary px-4">
+                            <i class="bi bi-arrow-counterclockwise me-1" aria-hidden="true"></i>Limpar
+                        </button>
+                        <button type="submit" class="btn btn-primary px-4">
+                            <i class="bi bi-person-plus me-1" aria-hidden="true"></i>Cadastrar usuário
+                        </button>
                     </div>
                 </form>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

@@ -1,6 +1,32 @@
 const form = document.querySelector("#formCadastro");
 const cep = document.querySelector("#cep");
 const buscarCep = document.querySelector("#buscarCep");
+const camposComSugestoes = ["bairro", "cidade"];
+
+function carregarSugestoes(campo) {
+    const lista = document.querySelector(`#sugestoes${campo[0].toUpperCase()}${campo.slice(1)}`);
+    const sugestoes = JSON.parse(localStorage.getItem(`sugestoes-${campo}`) || "[]");
+
+    lista.replaceChildren(...sugestoes.map((valor) => {
+        const opcao = document.createElement("option");
+        opcao.value = valor;
+        return opcao;
+    }));
+}
+
+function salvarSugestoes() {
+    camposComSugestoes.forEach((campo) => {
+        const valor = document.querySelector(`#${campo}`).value.trim();
+        if (!valor) return;
+
+        const chave = `sugestoes-${campo}`;
+        const sugestoes = JSON.parse(localStorage.getItem(chave) || "[]");
+        const atualizadas = [valor, ...sugestoes.filter((item) => item !== valor)].slice(0, 20);
+        localStorage.setItem(chave, JSON.stringify(atualizadas));
+    });
+}
+
+camposComSugestoes.forEach(carregarSugestoes);
 
 function mensagem(texto, tipo = "sucesso") {
     Toastify({
@@ -18,6 +44,7 @@ function mensagem(texto, tipo = "sucesso") {
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
+    salvarSugestoes();
     console.log(Object.fromEntries(
         [...form.elements]
             .filter((element) => element.id)
