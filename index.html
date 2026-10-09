@@ -226,39 +226,11 @@
                                     placeholder="Ex.: AP, Casa, Bloco." autocomplete="address-line2" required>
                             </div>
                             <div class="col-md-6 col-lg-3">
-                                <label for="estado" class="form-label required">Estado</label>
-                                <input type="text" class="form-control" id="estado" name="estado"
-                                    placeholder="UF ou estado" list="sugestoesEstado"
-                                    autocomplete="address-level1" required>
-                                <datalist id="sugestoesEstado">
-                                    <option value="AC" label="Acre"></option>
-                                    <option value="AL" label="Alagoas"></option>
-                                    <option value="AP" label="Amapá"></option>
-                                    <option value="AM" label="Amazonas"></option>
-                                    <option value="BA" label="Bahia"></option>
-                                    <option value="CE" label="Ceará"></option>
-                                    <option value="DF" label="Distrito Federal"></option>
-                                    <option value="ES" label="Espírito Santo"></option>
-                                    <option value="GO" label="Goiás"></option>
-                                    <option value="MA" label="Maranhão"></option>
-                                    <option value="MT" label="Mato Grosso"></option>
-                                    <option value="MS" label="Mato Grosso do Sul"></option>
-                                    <option value="MG" label="Minas Gerais"></option>
-                                    <option value="PA" label="Pará"></option>
-                                    <option value="PB" label="Paraíba"></option>
-                                    <option value="PR" label="Paraná"></option>
-                                    <option value="PE" label="Pernambuco"></option>
-                                    <option value="PI" label="Piauí"></option>
-                                    <option value="RJ" label="Rio de Janeiro"></option>
-                                    <option value="RN" label="Rio Grande do Norte"></option>
-                                    <option value="RS" label="Rio Grande do Sul"></option>
-                                    <option value="RO" label="Rondônia"></option>
-                                    <option value="RR" label="Roraima"></option>
-                                    <option value="SC" label="Santa Catarina"></option>
-                                    <option value="SP" label="São Paulo"></option>
-                                    <option value="SE" label="Sergipe"></option>
-                                    <option value="TO" label="Tocantins"></option>
-                                </datalist>
+                                <label for="estado" class="form-label required">Estados</label>
+                                <select class="form-control" id="estado" name="estado" required>
+                                <option>Selecione um estado</option>
+                                </select>
+                                 
                             </div>
                             <div class="col-md-6 col-lg-5">
                                 <label for="cidade" class="form-label required">Cidade</label>
